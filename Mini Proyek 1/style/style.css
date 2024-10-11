@@ -423,7 +423,7 @@ main .project-section .project-content {
       width: 90%;
    }
 
-   main .techical-skills .techical-header, main .project-section .project-header {
+   main .techical-skills .techical-header, main .project-section .project-header, main .testimonial-section .testimonial-header {
       width: 90%;
    }
 
@@ -449,7 +449,7 @@ main .project-section .project-content {
       width: 100%;
    }
 
-   main .techical-skills .techical-header, main .project-section .project-header {
+   main .techical-skills .techical-header, main .project-section .project-header, main .testimonial-section .testimonial-header {
       width: 100%;
    }
 
@@ -513,7 +513,7 @@ main .project-section .project-content {
       order: 1; 
    }
 
-   main .techical-skills .techical-header, main .project-section .project-header {
+   main .techical-skills .techical-header, main .project-section .project-header, main .testimonial-section .testimonial-header {
       text-align: center;
       padding: 50px 0;
    }
