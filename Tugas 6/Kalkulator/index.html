@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+   <meta charset="UTF-8" />
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <link rel="stylesheet" href="/assets/style.css" />
+
+   <title>Document</title>
+
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         width: 100%;
+         height: 100vh;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .calculator {
+         background-color: rgb(106, 106, 106);
+         padding: 15px;
+         border-radius: 5px;
+         display: flex;
+         align-items: center;
+         flex-direction: column;
+         gap: 5px;
+         box-shadow: 2px 2px 5px 1px rgb(0, 0, 0);
+      }
+
+      .calculator input {
+         width: 100%;
+         height: 40px;
+         text-align: right;
+         background-color: aliceblue;
+         border: none;
+      }
+
+      .calculator-keys {
+         display: grid;
+         grid-template-columns: repeat(4, 1fr);
+         grid-template-rows: repeat(4, 1fr);
+         gap: 5px;
+      }
+
+      button {
+         background-color: aliceblue;
+         color: black;
+         padding: 10px 15px;
+      }
+
+      button:hover {
+         background-color: rgb(178, 187, 194);
+      }
+   </style>
+
+</head>
+
+<body>
+
+   <div class="calculator">
+
+      <input type="number" class="calculator-screen" id="screen" readonly max="10" />
+
+      <div class="calculator-keys">
+
+         <button id="seven" class="key" onclick="appendNumber('7')">7</button>
+         <button id="eight" class="key" onclick="appendNumber('8')">8</button>
+         <button id="nine" class="key" class="key" onclick="appendNumber('9')">9</button>
+         <button id="add" class="key operator" onclick="setOperator('+')">+</button>
+
+         <button id="four" class="key" class="key" onclick="appendNumber('4')">4</button>
+         <button id="five" class="key" class="key" onclick="appendNumber('5')">5</button>
+         <button id="six" class="key" class="key" onclick="appendNumber('6')">6</button>
+         <button id="subtract" class="key operator" onclick="setOperator('-')"">-</button>
+
+         <button id=" one" class="key" class="key" onclick="appendNumber('1')">1</button>
+         <button id="two" class="key" class="key" onclick="appendNumber('2')">2</button>
+         <button id="three" class="key" class="key" onclick="appendNumber('3')">3</button>
+         <button id="multiply" class="key operator" onclick="setOperator('*')">×</button>
+
+         <button id="clear" class="key" onclick="clearScreen()">C</button>
+         <button id="zero" class="key" class="key" onclick="appendNumber('0')">0</button>
+         <button id="equals" class="key" onclick="calculate()">=</button>
+         <button id="divide" class="key operator" onclick="setOperator('/')">÷</button>
+
+      </div>
+
+   </div>
+
+   <script src="main.js"></script>
+
+</body>
+
+</html>

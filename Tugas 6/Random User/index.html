@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Random User</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <header>
+      <h1>Random User List</h1>
+
+      <div class="search-bar">
+         <input type="text" id="search-input" placeholder="Search by name...">
+         <button id="search-btn" type="button">Search</button>
+      </div>
+   </header>
+
+   <main>
+      <section class="container">
+      </section>
+
+      <section class="loading">
+         <div class="loading-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+               <radialGradient id="a11" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)">
+                  <stop offset="0" stop-color="#FF156D"></stop>
+                  <stop offset=".3" stop-color="#FF156D" stop-opacity=".9"></stop>
+                  <stop offset=".6" stop-color="#FF156D" stop-opacity=".6"></stop>
+                  <stop offset=".8" stop-color="#FF156D" stop-opacity=".3"></stop>
+                  <stop offset="1" stop-color="#FF156D" stop-opacity="0"></stop>
+               </radialGradient>
+               <circle transform-origin="center" fill="none" stroke="url(#a11)" stroke-width="15" stroke-linecap="round"
+                  stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70">
+                  <animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0"
+                     keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform>
+               </circle>
+               <circle transform-origin="center" fill="none" opacity=".2" stroke="#FF156D" stroke-width="15"
+                  stroke-linecap="round" cx="100" cy="100" r="70"></circle>
+            </svg>
+            <p>Please wait...</p>
+         </div>
+      </section>
+
+      <section class="pages">
+         <button id="prev-btn" type="button">Prev</button>
+         <p class="page-number">1</p>
+         <button id="next-btn" type="button">Next</button>
+      </section>
+   </main>
+
+   <footer>
+      <p>Copyright @2024 || Riki Ridwan - Lumoshive Academy</p>
+   </footer>
+
+   <script src="script.js"></script>
+</body>
+
+</html>

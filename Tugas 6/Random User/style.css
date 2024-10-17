@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  /* border: 1px solid red; */
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 150px;
+  background-color: #fb80af;
+}
+
+header h1 {
+  font-size: 1.9rem;
+}
+
+header .search-bar {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+header .search-bar input {
+  width: 100%;
+  height: 33px;
+  padding: 5px 15px;
+  font-size: 0.8rem;
+}
+
+header .search-bar input:focus {
+  outline: none;
+  border: 1px solid #ff156d;
+}
+
+header .search-bar button, button {
+  padding: 8px 10px;
+  background-color: #ff156d;
+  color: aliceblue;
+  border: none;
+  border-radius: 5px;
+}
+
+header .search-bar button:hover, button:hover {
+  background-color: #c11356;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 60vh;
+}
+
+.container {
+  display: none;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 50px;
+  gap: 15px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+}
+
+.not-found {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+}
+
+.loading svg {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+}
+
+.loading-container {
+  margin-top: 40px;
+}
+
+.list-item {
+  padding: 10px;
+  box-shadow: 1px 1px 3px 1px rgb(0, 0, 0);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.list-item img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.list-item .about-person {
+  text-align: center;
+}
+
+.list-item .about-person h2 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.list-item .about-person p {
+  font-size: 0.7rem;
+}
+
+.pages {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  background: #ff156d;
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: aliceblue;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
