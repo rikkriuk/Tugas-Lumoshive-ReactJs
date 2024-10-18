@@ -7,6 +7,11 @@
   --highlight-color: #F5004F;
 }
 
+.swal2-confirm {
+   background-color: var(--highlight-color) !important;
+   color: var(--background-color);
+ }
+
 html {
   scroll-behavior: smooth;
 }
@@ -20,11 +25,13 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   background-color: var(--background-color);
 }
 
 header {
   display: grid;
+  /* overflow-x: hidden; */
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   padding: 25px 200px;
@@ -37,7 +44,7 @@ header {
 
 header .header-logo h1 {
   font-weight: 600;
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   font-size: 1.4rem;
 }
 
@@ -60,6 +67,17 @@ header .navbar ul a:hover {
   color: var(--highlight-color);
 }
 
+.menu {
+   display: none;
+}
+
+header .menu i {
+   padding: 10px 12px;
+   font-size: 2rem;
+   color: var(--secondary-text-color);
+}
+
+
 main {
   padding: 25px 200px;
 }
@@ -68,15 +86,9 @@ main {
 
 main .hero-section {
    display: grid;
-   grid-template-columns: 100px 200px 1fr;
-   align-items: center;
-   margin-top: 100px;
-}
-
-main .hero-section {
-   display: grid;
    grid-template-columns: 100px 1fr 1fr;
    align-items: center;
+   margin-top: 100px;
    gap: 20px;
 }
 
@@ -100,30 +112,27 @@ main .hero-section .social-media i:hover {
 main .hero-section .hero-content {
    display: flex;
    flex-direction: column;
-   width: 80%;
+   width: 90%;
 }
 
 main .hero-section .hero-content h1 {
-   font-size: 3rem;
    font-weight: 600;
    color: var(--primary-text-color);
    margin-bottom: 10px;
-}
-
-main .hero-section .hero-content h1 span {
-   color: #F5004F;
+   font-size: 1.7rem;
+   color: #4b4a4d;
 }
 
 main .hero-section .hero-content h2 {
-   color: #4b4a4d;
-   font-size: 1.7rem;
+   color: #F5004F;
+   font-size: 2.9rem;
 }
 
 main .hero-section .hero-content p {
    margin-top: 25px;
    color: #4b4a4d;
-   font-size: 1rem;
-   padding-right: 100px;
+   font-size: 1.1rem;
+   padding-right: 50px;
 }
 
 .hero-buttons {
@@ -406,8 +415,27 @@ main .project-section .project-content {
 }
 
 .footer .footer-content p {
-   color: var(--secondary-text-color-text-color);
+   color: var(--secondary-text-color);
    font-weight: 600;
+}
+
+.cursor {
+  display: inline-block;
+  width: 4px;
+  background-color: var(--secondary-text-color);
+  animation: blink 1s step-end infinite;
+  height: 2.7rem;
+}
+
+.blur-effect {
+   filter: blur(5px);
+   transition: filter 0.3s ease;
+}
+
+@keyframes blink {
+  50% {
+    background-color: transparent;
+  }
 }
 
 @media (max-width: 1320px) {
@@ -486,16 +514,22 @@ main .project-section .project-content {
       grid-template-columns: 1fr;
       gap: 10px;
       margin-top: 50px;
+      justify-items: center;
    }
 
    main .hero-section .hero-content h1 {
-      font-size: 2.2rem;
+      font-weight: 600;
+      font-size: 1.7rem;
+      margin-top: 5px;
+   }
+   
+   main .hero-section .hero-content h2 {
+      font-size: 2.5rem;
       font-weight: 600;
    }
 
-   main .hero-section .hero-content h2 {
-      color: #4b4a4d;
-      font-size: 1.5rem;
+   main .hero-section .hero-content p {
+      font-size: 1rem;
    }
 
    main .hero-section .hero-image {
@@ -507,6 +541,7 @@ main .project-section .project-content {
       order: 0;
       flex-direction: row;
       margin-top: 20px;
+      gap: 20px;
    }
 
    main .hero-section .hero-content {
@@ -536,5 +571,76 @@ main .project-section .project-content {
    main .contact-section,
    .footer {
       margin-top: 100px;
+   }
+
+   
+
+   .menu {
+      display: flex;
+      justify-content: end;
+   }
+
+   header {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+
+   }
+
+   .menu.open-menu {
+      display: flex;
+      align-items: end;
+   }
+
+   .menu {
+      display: block;
+   }
+
+   .close-menu {
+      position: absolute;
+      top: 30px;
+      right: 10px;
+   }
+   
+   .navbar .close-menu i {
+      color: var(--background-color);
+      font-weight: 800;
+   }
+
+   body {
+      /* filter: blur(5px); */
+   }
+
+   .navbar.navbar-toggle {
+      transform: translateX(0);
+   }
+
+   header .navbar {
+      transform: translateX(450px);
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 100vh;
+      width: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #c4023f;
+      z-index: 999;
+      transition: 0.3s ease-in;
+   }
+
+   header .navbar ul {
+      flex-direction: column;
+   }
+   
+   header .navbar ul li a {   
+      color: var(--background-color);
+   }
+}
+
+@media (max-width: 500px) {
+   main .hero-section .hero-image img {
+      width: 100%;
    }
 }

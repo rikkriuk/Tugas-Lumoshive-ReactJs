@@ -1,0 +1,10 @@
+POST https://lumoshive-academy-email-api.vercel.app/send-email
+Content-Type: application/json
+x-api-key: RJS1-202416
+
+{
+  "to": "rikiridwan949@gmail.com",
+  "name": "Alexsa",
+  "subject": "Pesan dari pengirim",
+  "text": "Halo, Alexsa! Ini adalah pesan dari pengirim."
+}
