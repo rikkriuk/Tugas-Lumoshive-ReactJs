@@ -12,9 +12,13 @@ export default function NewsDetail({ detail }) {
             </div>
             <div className="detail-content">
                {
-                  detail.content.map((item) => (
-                     item.startsWith("http") ? <img src={item} alt="image" className="content-image"/> : <p >{item}</p>
-                  ))
+                  detail.content.map((item, index) => (
+                     item.startsWith("http") ? (
+                         <img key={index} src={item} alt="image" className="content-image" />
+                     ) : (
+                         <p key={index}>{item}</p>
+                     )
+                 ))
                }
             </div>
         </div>
