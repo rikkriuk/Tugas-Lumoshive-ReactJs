@@ -84,7 +84,13 @@ export default class StudentContainer extends Component {
 
    toggleModalDetail = (student) => {
       this.setState({ modalDetail: !this.state.modalDetail })
-      this.state.currentStudent = student;
+      if (!this.state.modalDetail) {
+         this.state.currentStudent = student;
+      } else {
+         this.setState({ 
+            currentStudent: { name: "", nim: "", birthDate: "", address: "", guardianName: "" } 
+         })
+      }
    }
 
    handleAddOrUpdateStudent = () => {
