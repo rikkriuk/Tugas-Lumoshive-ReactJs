@@ -1,0 +1,32 @@
+.chat-message-cstm:last-of-type {
+  padding-bottom: 150px;
+}
+
+.rounded-user-cstm {
+  border-radius: 15px 15px 0 15px;
+}
+
+.rounded-ai-cstm {
+  border-radius: 15px 15px 15px 0;
+}
+
+.message-cstm {
+  min-height: 90vh;
+}
+
+.dark-mode {
+  background-color: #121212;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  .navbar,
+  .footer {
+    background-color: #333;
+    color: #ffffff;
+  }
+}
