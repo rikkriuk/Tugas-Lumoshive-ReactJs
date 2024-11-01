@@ -12,6 +12,21 @@ export const login = async (data) => {
   return response.data;
 };
 
+export const logout = async (token) => {
+  const response = await axios.post(
+    `${API_URL}/logout`,
+    {},
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "RJS1-202416",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return response.data;
+};
+
 export const register = async (data) => {
   const response = await axios.post(`${API_URL}/register`, data, {
     headers: {

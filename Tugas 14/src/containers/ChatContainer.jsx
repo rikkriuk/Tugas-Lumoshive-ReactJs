@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ChatInput from "../components/ChatInput";
 import ChatMessage from "../components/ChatMessage";
 import Navbar from "../components/Nabvar";
-import { queryAI } from "../utils/api";
+import { queryAI, logout } from "../utils/api";
 import LoadingMessage from "../components/LoadingMessage";
 import ErrorMessage from "../components/ErrorMessage";
 import EmptyMessage from "../components/EmptyMessage";
@@ -49,8 +49,11 @@ export default class ChatContainer extends Component {
    }
 
    handleLogout = () => {
-      this.props.setToken(null);
-      localStorage.removeItem("token");
+      logout(this.props.token)
+      .then(() => {
+         this.props.setToken(null);
+         localStorage.removeItem("token");
+      })
    }
 
    renderMessages() {
