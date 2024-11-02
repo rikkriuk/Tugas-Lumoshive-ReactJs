@@ -3,7 +3,7 @@ import ModalHeader from "../molecules/ModalHeader";
 import ModalBody from "../molecules/ModalBody";
 import ModalFooter from "../molecules/ModalFooter";
 
-const Form = (props) => {
+const Modal = (props) => {
    const { setIsFormVisible, handleChange, handleSubmit, formData, isEdit, formValidation, isLoading} = props;
 
     return (
@@ -21,4 +21,4 @@ const Form = (props) => {
    );
 }
 
-export default Form;
+export default Modal;
