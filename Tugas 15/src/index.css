@@ -1,0 +1,41 @@
+.bg-color {
+  background-color: #1a1f36;
+}
+
+.text-link {
+  color: white;
+  text-decoration: none;
+}
+
+.border-color {
+  border-bottom: 1px solid rgb(252, 100, 35);
+}
+
+.border-top-cstm {
+  border-top: 1px solid rgb(252, 100, 35) !important;
+}
+
+.font-gill {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.color-orange {
+  color: rgb(252, 100, 35);
+}
+
+.min-h-80 {
+  min-height: 85vh;
+}
+
+.disabled-link {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.dashed-line {
+  border-bottom: 1px dashed #ffffff;
+}
+
+main {
+  padding-top: 30px;
+}
