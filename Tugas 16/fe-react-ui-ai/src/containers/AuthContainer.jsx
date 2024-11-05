@@ -1,11 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import LoginModal from "../components/LoginModal";
 import { login, register } from "../utils/api";
-import { AuthContext } from "../App";
 
-const AuthContainer = () => {
-  const { setToken } = useContext(AuthContext);
-
+const AuthContainer = ({ setToken }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [form, setForm] = useState({ username: "", password: "" });
   const [loading, setLoading] = useState(false);

@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChatInput from "../components/ChatInput";
 import ChatMessage from "../components/ChatMessage";
 import Navbar from "../components/Navbar";
 import Load from "../components/Load";
 import { queryAI, logout } from "../utils/api";
-import { AuthContext } from "../App";
 
-const ChatContainer = () => {
-  const { token, setToken } = useContext(AuthContext);
+const ChatContainer = ({ token, setToken }) => {
   
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
