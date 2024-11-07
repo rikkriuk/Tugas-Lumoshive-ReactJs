@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 import { Modal, Button } from "react-bootstrap";
@@ -7,9 +7,9 @@ import { LanguageContext } from "../App";
 
 const ActivityForm = ({ showModal, setShowModal, form, setForm, handleChange, edit, setEdit }) => {
   const { language } = useContext(LanguageContext);
-  const [ errors, setErrors ] = useState({});
+  const [errors, setErrors] = useState({});
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setShowModal(false);
     setEdit({
       id: null,
@@ -20,7 +20,7 @@ const ActivityForm = ({ showModal, setShowModal, form, setForm, handleChange, ed
       description: "",
     });
     setErrors({});
-  };
+  }, [setShowModal, setEdit, setForm]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -31,58 +31,64 @@ const ActivityForm = ({ showModal, setShowModal, form, setForm, handleChange, ed
       newErrors.description = language === "en" ? "Description is required" : "Deskripsi wajib diisi";
     }
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // return true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-      return; // jika ada error, stop eksekusi form submit
-    }
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
 
-    try {
-      let response;
-      if (edit?.edit) {
-        response = await updateData(edit.id, form);
-        Swal.fire({
-          text: language === "en" ? "The activity has been updated successfully." : "Aktivitas berhasil diperbarui.",
-          icon: "success",
-        });
-      } else {
-        response = await postData(form);
-        Swal.fire({
-          text: language === "en" ? "The activity has been added successfully" : "Aktivitas berhasil ditambah.",
-          icon: "success",
-        });
+      if (!validateForm()) {
+        return;
       }
-      setForm({
-        title: "",
-        description: "",
-      });
-      setErrors({});
-    } catch (error) {
-      console.log(error);
-      Swal.fire({
-        text: language === "en" ? "Something went wrong." : "Terjadi kesalahan.",
-        icon: "error",
-      });
-    } finally {
-      setEdit({
-        id: null,
-        edit: false,
-      });
-      setShowModal(false);
-    }
-  };
+
+      try {
+        if (edit?.edit) {
+          await updateData(edit.id, form);
+          Swal.fire({
+            text: language === "en" ? "The activity has been updated successfully." : "Aktivitas berhasil diperbarui.",
+            icon: "success",
+          });
+        } else {
+          await postData(form);
+          Swal.fire({
+            text: language === "en" ? "The activity has been added successfully" : "Aktivitas berhasil ditambah.",
+            icon: "success",
+          });
+        }
+        setForm({
+          title: "",
+          description: "",
+        });
+        setErrors({});
+      } catch (error) {
+        console.error(error);
+        Swal.fire({
+          text: language === "en" ? "Something went wrong." : "Terjadi kesalahan.",
+          icon: "error",
+        });
+      } finally {
+        setEdit({
+          id: null,
+          edit: false,
+        });
+        setShowModal(false);
+      }
+    },
+    [form, edit, language, setForm, setEdit, setShowModal]
+  );
 
   return (
     <Modal show={showModal} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title>{edit.edit ? (language === "en" ? "Edit Activity" : "Ubah Aktivitas") : (language === "en" ? "Add Activity" : "Tambah Aktivitas")}</Modal.Title>
+        <Modal.Title>
+          {edit.edit
+            ? language === "en" ? "Edit Activity" : "Ubah Aktivitas"
+            : language === "en" ? "Add Activity" : "Tambah Aktivitas"}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               {language === "en" ? "Title" : "Judul"}
@@ -111,7 +117,7 @@ const ActivityForm = ({ showModal, setShowModal, form, setForm, handleChange, ed
             ></textarea>
             {errors.description && <div className="invalid-feedback">{errors.description}</div>}
           </div>
-          <Button variant={`${edit.edit ? "success" : "primary"}`} onClick={handleSubmit}>
+          <Button type="submit" variant={`${edit.edit ? "success" : "primary"}`}>
             {edit.edit ? (language === "en" ? "Update" : "Perbarui") : (language === "en" ? "Add" : "Tambah")}
           </Button>
         </form>
