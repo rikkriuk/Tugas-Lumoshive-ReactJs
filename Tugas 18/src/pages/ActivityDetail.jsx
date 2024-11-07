@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDataById } from "../utils/api";
 import useTimer from "../components/Timer";
+import { LanguageContext } from "../App"
 
 const ActivityDetail = () => {
+  const { language } = useContext(LanguageContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [ data, setData ] = useState(null);
@@ -24,13 +26,13 @@ const ActivityDetail = () => {
 
   if (loading) {
     return <div className="container d-flex justify-content-center align-items-center mt-5">
-      <p>Loading...</p>
+      <p>{language === "en" ? "Loading..." : "Memuat..."}</p>
     </div>
   }
 
   if (!data) {
     return <div className="container d-flex justify-content-center align-items-center mt-5">
-      <p>Activity Not Found</p>
+      <p>{language === "en" ? "Activity not found" : "Aktivitas tidak ditemukan"}</p>
     </div>
   }
   
@@ -42,22 +44,22 @@ const ActivityDetail = () => {
       </p>
       <div className="card border-primary my-4">
         <div className="card-body">
-          <p className="card-text">Time Spent: {time} seconds</p>
+          <p className="card-text">{language === "en" ? `Time Spent: ${time} seconds` : `Waktu yang Dihabiskan: ${time} detik`}</p>
           <div className="btn-group">
             <button onClick={startTimer} className="btn btn-outline-success">
-              <i className="bi bi-play-fill"></i> Start
+              <i className="bi bi-play-fill"></i> {language === "en" ? "Start" : "Mulai"}
             </button>
             <button onClick={stopTimer} className="btn btn-outline-warning">
-              <i className="bi bi-pause-fill"></i> Stop
+              <i className="bi bi-pause-fill"></i> {language === "en" ? "Stop" : "Berhenti"}
             </button>
             <button onClick={resetTimer} className="btn btn-outline-danger">
-              <i className="bi bi-arrow-counterclockwise"></i> Reset
+              <i className="bi bi-arrow-counterclockwise"></i> {language === "en" ? "Reset" : "Atur ulang"}
             </button>
           </div>
         </div>
       </div>
       <button onClick={() => navigate(-1)} className="btn btn-secondary mt-3">
-        <i className="bi bi-arrow-left"></i> Back to List
+        <i className="bi bi-arrow-left"></i> {language === "en" ? "Back to List" : "Kembali ke daftar"}
       </button>
     </div>
   );

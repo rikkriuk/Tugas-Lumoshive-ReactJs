@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { LanguageContext } from "../App";
 
 const ActivityList = ({ data, setShowModal, setForm, setData, setEdit}) => {
-  const {language} = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
   const handleEdit = (id) => {
     getDataById(id)
     .then((data) => {

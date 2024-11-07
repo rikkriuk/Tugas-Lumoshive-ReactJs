@@ -1,7 +1,12 @@
+import { useContext } from "react";
+import { LanguageContext } from "../App";
+
 const NotFound = () => {
+   const { language } = useContext(LanguageContext);
+
    return (
       <div className="container d-flex justify-content-center align-items-center mt-5">
-         <p>Page Not Found</p>
+         <p>{language === "en" ? "Page not found" : "Halaman tidak ditemukan"}</p>
       </div>
    )
 }

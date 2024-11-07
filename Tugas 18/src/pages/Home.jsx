@@ -6,11 +6,11 @@ import useForm from "../hooks/useForm";
 import { LanguageContext } from "../App";
 
 const Home = () => {
-  const {language} = useContext(LanguageContext)
-  const [showModal, setShowModal] = useState(false);
-  const [isEdit, setIsEdit] = useState({ id: null, edit: false});
-  const [data, setData] = useState([]);
-  const [form, setForm, handleChange] = useForm({
+  const { language } = useContext(LanguageContext)
+  const [ showModal, setShowModal ] = useState(false);
+  const [ isEdit, setIsEdit ] = useState({ id: null, edit: false});
+  const [ data, setData ] = useState([]);
+  const [ form, setForm, handleChange ] = useForm({
     title: "",
     description: "",
   });
