@@ -9,20 +9,26 @@ export const LanguageContext = createContext();
 export const ThemeContext = createContext();
 
 const App = () => {
-  const [language, setLanguage] = useState("en");
-  const [theme, setTheme] = useState("light");
+  let settings = JSON.parse(localStorage.getItem("settings")) || {};
+  const [language, setLanguage] = useState(settings.language || "en");
+  const [theme, setTheme] = useState(settings.theme || "light");
 
   const handleChangeLanguage = (language) => {
     setLanguage(language);
   }
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === "light" ? "dark" : "light"
+      settings = { language, theme: newTheme };
+      localStorage.setItem("settings", JSON.stringify(settings));
+      return newTheme;
+    });
   };
 
   useEffect(() => {
     document.documentElement.setAttribute("data-bs-theme", theme);
-  }, [theme]);
+  }, [language, theme]);
 
   return (
     <LanguageContext.Provider value={{language, setLanguage: handleChangeLanguage}}>
