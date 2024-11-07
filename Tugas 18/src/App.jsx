@@ -15,6 +15,8 @@ const App = () => {
 
   const handleChangeLanguage = (language) => {
     setLanguage(language);
+    settings = { language, theme };
+    localStorage.setItem("settings", JSON.stringify(settings));
   }
 
   const toggleTheme = () => {
