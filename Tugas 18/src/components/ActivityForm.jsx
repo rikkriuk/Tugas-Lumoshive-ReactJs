@@ -7,7 +7,7 @@ import { LanguageContext } from "../App";
 
 const ActivityForm = ({ showModal, setShowModal, form, setForm, handleChange, edit, setEdit }) => {
   const { language } = useContext(LanguageContext);
-  const [errors, setErrors] = useState({});
+  const [ errors, setErrors ] = useState({});
 
   const handleClose = useCallback(() => {
     setShowModal(false);
