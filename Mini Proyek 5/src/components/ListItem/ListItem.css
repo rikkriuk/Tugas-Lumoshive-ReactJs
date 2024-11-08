@@ -1,0 +1,78 @@
+.list-item {
+   padding: 25px 0;
+}
+
+.list-item-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 20px 0;
+}
+
+.list-item-content {
+   overflow-x: scroll;
+}
+
+.action {
+   display: flex;
+   justify-content: center;
+   align-items: start;
+   flex-direction: column;
+   gap: 5px;
+}
+
+.add-btn {
+   background-color: #0275dd;
+}
+
+.add-btn:hover {
+   background-color: #034986;
+}
+
+.edit-btn {
+   background-color: #2b932b;
+}
+
+.edit-btn:hover {
+   background-color: #1c6f1c;
+}
+
+.delete-btn {
+   background-color: #ff534f;
+}
+
+.delete-btn:hover {
+   background-color: #ba2220;
+}
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+   border-radius: 8px;
+}
+
+thead tr {
+  background-color: rgb(246, 92, 75);
+  color: #ffffff;
+  text-align: left;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  border: 1px solid #dddddd;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+table tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+   #header nav h1 {
+      font-size: 1.3rem;
+   }
+}

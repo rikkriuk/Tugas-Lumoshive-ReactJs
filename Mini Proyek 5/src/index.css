@@ -1,5 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Noto Sans Georgian', sans-serif;
+}
+
+main {
+  padding: 0 170px;
+  /* background-color: black; */
+}
+
+/* default button */
+button, .button {
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  color: aliceblue;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  transition: 0.2s;
+}
+
+button:active, .button:active {
+  transform: scale(0.95);
+}
+
+@media screen and (max-width: 992px) {
+    main {
+      padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 576px) {
+    main {
+      padding: 0 10px;
+    }
 }
