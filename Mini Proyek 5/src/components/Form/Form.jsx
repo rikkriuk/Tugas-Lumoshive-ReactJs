@@ -32,6 +32,7 @@ const Form = () => {
    });
 
    useEffect(() => {
+      // Check if id (edit) is exist
       if (id) {
          setLoading(true)
          api.get(`students/${id}`)
@@ -49,8 +50,11 @@ const Form = () => {
       }
    }, [])
 
+   // Handle search form
    const handleSubmit = async (e) => {
       e.preventDefault();
+      
+      // Validate form
       if (formValidation(form, setErrorForm, language, students, originalNim)) {
          return;
       }
@@ -92,7 +96,7 @@ const Form = () => {
    if (error) {
       return (
          <>
-            <NotFoundPage text={language === "en" ? "Data siswa tidak ditemukan" : "Student data not found"} />
+            <NotFoundPage text={language === "en" ? "Student data not found" : "Data siswa tidak ditemukan"} />
          </>
       )
    }
@@ -169,9 +173,11 @@ const Form = () => {
                         {language === "en" ? "Back" : "Kembali"}
                      </button>
 
-                     <button onClick={handleSubmit} className="add-btn">
-                        <i className="bi bi-plus-square"></i>
-                        {language === "en" ? "Add" : "Tambah"}
+                     <button onClick={handleSubmit} className={`${id ? "edit-btn" : "add-btn"}`}>
+                        <i className={`bi ${id ? "bi-pencil" : "bi-plus-square"}`}></i>
+                        {id 
+                           ? (language === "en" ? "Upload" : "Ubah") 
+                           : (language === "en" ? "Add" : "Tambah")}
                      </button>
                   </div>
                </form>

@@ -14,6 +14,7 @@ const ListItem = ({ data, setData, handleRefresh }) => {
       search: "",
    });
 
+   // Handle delete student data
    const handleDelete = (id) => {
       Swal.fire({
         title: language === "en" ? "Are you sure?" : "Apa kamu yakin?",
@@ -55,7 +56,13 @@ const ListItem = ({ data, setData, handleRefresh }) => {
       });
    }
 
+   // Handle search student data
    const handleSearch = () => {
+      if (form.search.trim() === "") {
+         handleRefresh();
+         return;
+      }
+
       api.get(`students?find=${form.search}`)
       .then((res) => {
          setForm({
@@ -72,7 +79,7 @@ const ListItem = ({ data, setData, handleRefresh }) => {
       <>
          <section className="list-item">
             <div className="list-item-header">
-               <h2>{language === "en" ? "List Students" : "Daftar Mahasiswa"}</h2>
+               <h2>{language === "en" ? "List Students" : "Daftar Siswa"}</h2>
                <div className="search-container">
                   <input type="text" onChange={handleChange} className="search-input" name="search" placeholder={language === "en" ? "Search..." : "Cari..."} />
                   <button onClick={handleRefresh} className="btn back-btn"><i className="bi bi-x-lg"></i></button>
