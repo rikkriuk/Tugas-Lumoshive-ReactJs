@@ -45,9 +45,16 @@ form {
   resize: vertical;
 }
 
-.form-item input:focus, .form-item textarea:focus, .form-item select:focus {
-  border-color: rgb(252, 37, 13);
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+input[type="date"] {
+   background-color: rgb(234, 52, 32);
+   border: none;
+   outline: none;
+   color: #fff;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+   background-color: #fff;
+   border-radius: 3px;
 }
 
 select {
@@ -88,6 +95,42 @@ select:focus {
 .loading {
   width: 10px;
   height: 10px;
+}
+
+.dark {
+   background-color: #3d3d3d;
+   color: #fff;
+}
+
+form.dark .form-item label {
+   color: white;
+}
+
+form.dark .form-item input::placeholder,
+form.dark .form-item textarea::placeholder {
+   color: #c0baba;
+}
+
+form.dark .form-item input,
+form.dark .form-item textarea,
+form.dark .form-item select {
+   background-color: #555;
+   border: 1px solid #666;
+   color: white;
+}
+
+form.dark .form-item input:focus,
+form.dark .form-item textarea:focus,
+form.dark .form-item select:focus {
+   border-color: #c0baba;
+}
+
+form.dark .form-item .form-error {
+   color: #ff6f61; 
+}
+
+form.dark .button-container button {
+   border: 1px solid white;
 }
 
 @media screen and (max-width: 1200px) {

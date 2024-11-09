@@ -5,16 +5,20 @@ import useInput from "../../hooks/useInput";
 import { api } from "../../utils/api";
 import LoadingSvg from "../Loading/Loading";
 import NotFoundPage from "../NotFound/NotFound";
-import { LanguageContext } from "../../App";
+import { LanguageContext, ThemeContext } from "../../App";
 import formValidation from "../../utils/validation";
+import useStudentData from "../../hooks/useStudentData";
 
 const Form = () => {
    const navigate = useNavigate();
    const {language} = useContext(LanguageContext);
+   const {isDarkMode} = useContext(ThemeContext);
    const {id} = useParams();
    const [errorForm, setErrorForm] = useState({});
    const [error, setError] = useState(false);
    const [loading, setLoading] = useState(false);
+   const students = useStudentData();
+   const [originalNim, setOriginalNim] = useState(false);
    const [form, setForm, handleChange] = useInput({
       name: "",
       class: "",
@@ -33,6 +37,7 @@ const Form = () => {
          .then((res) => {
             const data = res.data.data;
             setForm(data);
+            setOriginalNim(data.nim);
          })
          .catch((err) => {
             setError(true);
@@ -45,7 +50,7 @@ const Form = () => {
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-      if (formValidation(form, setErrorForm, language)) {
+      if (formValidation(form, setErrorForm, language, students, originalNim)) {
          return;
       }
 
@@ -89,7 +94,7 @@ const Form = () => {
             </div>
 
             <div className="form-content">
-               <form>
+               <form className={isDarkMode ? "dark" : ""}>
                   <div className="form-container">
                      <div className="form-item">
                         <label htmlFor="name">{language === "en" ? "Name" : "Nama"}</label>
@@ -126,7 +131,7 @@ const Form = () => {
 
                      <div className="form-item">
                         <label htmlFor="birthDate">{language === "en" ? "Birth Date" : "Tanggal Lahir"}</label>
-                        <input id="birthDate" name="birthDate" className={`${errorForm.birthDate && "form-error"}`} value={form.birthDate} onChange={handleChange} type="date" required/>
+                        <input id="birthDate" name="birthDate" className={`${errorForm.birthDate && "form-error"} datepicker-input`} value={form.birthDate} onChange={handleChange} type="date" required/>
                         {errorForm.birthDate && <p className="text-error">{errorForm.birthDate}</p>}
                      </div>
 

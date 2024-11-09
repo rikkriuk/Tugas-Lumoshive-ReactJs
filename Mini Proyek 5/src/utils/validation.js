@@ -1,6 +1,12 @@
 import React from "react";
 
-const formValidation = (form, setErrorForm, language) => {
+const formValidation = (
+  form,
+  setErrorForm,
+  language,
+  students,
+  originalNim
+) => {
   let errorForm = {};
 
   if (form.name.trim() === "") {
@@ -29,6 +35,12 @@ const formValidation = (form, setErrorForm, language) => {
   if (form.nim.trim() === "") {
     errorForm.nim =
       language === "en" ? "NIM cannot be empty" : "NIM tidak boleh kosong";
+  } else if (
+    form.nim !== originalNim &&
+    students.some((student) => student.nim === form.nim)
+  ) {
+    errorForm.nim =
+      language === "en" ? "NIM already exists" : "NIM sudah terdaftar";
   }
 
   if (form.guardian_name.trim() === "") {

@@ -3,10 +3,11 @@ import "./ListItem.css"
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { api } from "../../utils/api";
-import { LanguageContext } from "../../App";
+import { LanguageContext, ThemeContext } from "../../App";
 
 const ListItem = ({ data, onDeleteSuccess }) => {
    const {language} = useContext(LanguageContext);
+   const {isDarkMode} = useContext(ThemeContext);
 
    const handleDelete = (id) => {
       api.delete(`students/${id}`)
@@ -32,7 +33,7 @@ const ListItem = ({ data, onDeleteSuccess }) => {
             </div>
 
             <div className="list-item-content">
-               <table>
+               <table className={isDarkMode ? "dark" : ""}>
                   <thead>
                      <tr>
                         <th>{language === "en" ? "Name" : "Nama"}</th>

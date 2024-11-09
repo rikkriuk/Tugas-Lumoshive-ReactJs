@@ -77,6 +77,36 @@ table tbody tr:hover {
    font-size: 0.95rem;
 }
 
+.dark {
+   background-color: #1f2937;
+   color: #d1d5db;
+}
+
+.dark thead tr {
+   background-color: #555;
+   color: #d1d5db;
+}
+
+.dark tbody tr:nth-child(even) {
+   background-color: #2d3748;
+}
+
+.dark tbody tr:hover {
+   background-color: #434343;
+}
+
+.dark th, .dark td {
+   border-bottom: 1px solid #4b5563;
+}
+
+.dark .action .button {
+   background-color: #2563eb;
+}
+
+.dark .action .delete-btn {
+   background-color: #dc2626;
+}
+
 @media screen and (max-width: 768px) {
    #header nav h1 {
       font-size: 1.3rem;

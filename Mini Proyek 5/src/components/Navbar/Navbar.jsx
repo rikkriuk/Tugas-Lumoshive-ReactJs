@@ -1,20 +1,22 @@
 import React, { useContext } from "react";
 import "./Navbar.css"
-import { LanguageContext } from "../../App";
+import { LanguageContext, ThemeContext } from "../../App";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
    const {language, onChangeLanguage} = useContext(LanguageContext);
+   const {isDarkMode, toggleDarkMode} = useContext(ThemeContext);
    return (
       <> 
          <header id="header">
             <nav>
-               <h1>Mini Proyek 5</h1>
+               <Link className="home" to={"/"}>Mini Proyek 5</Link>
             </nav>
 
             <div className="settings">
-               <button className="theme-btn">
-                  <i className="bi bi-moon-stars"></i>
-                  {language === "en" ? "Dark Mode" : "Mode Gelap"}
+               <button onClick={toggleDarkMode} className="theme-btn">
+                  <i className={`bi ${isDarkMode ? "bi-brightness-low-fill" : "bi-moon-stars"}`}></i>
+                  {language === "en" ? (isDarkMode ? "Mode Gelap" : "Mode Terang") : (isDarkMode ? "Dark Mode" : "Light Mode")}
                </button>
                <button onClick={onChangeLanguage} className="language-btn">
                   <i className="bi bi-translate"></i>

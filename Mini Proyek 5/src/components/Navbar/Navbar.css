@@ -22,6 +22,13 @@
   color: #000;
 }
 
+.home {
+   text-decoration: none;
+   color: aliceblue;
+   font-size: 1.4rem;
+   font-weight: 600;
+}
+
 @media screen and (max-width: 992px) {
   #header {
     padding: 15px 30px;
@@ -35,4 +42,8 @@
   #header {
     padding: 15px 10px;
   }
+
+  .home {
+   font-size: 1.2rem;
+   }
 }

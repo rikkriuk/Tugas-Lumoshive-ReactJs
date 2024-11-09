@@ -9,11 +9,11 @@
 
 main {
   padding: 0 170px;
-  /* background-color: black; */
 }
 
-body {
-  /* background-color: black; */
+body.dark {
+  background-color: #303030;
+  color: white;
 }
 
 /* default button */
