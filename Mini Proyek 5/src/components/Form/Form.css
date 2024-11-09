@@ -51,7 +51,7 @@ form {
 }
 
 select {
-   width: 100px;
+   width: 200px;
    padding: 10px;
 }
 
@@ -83,6 +83,11 @@ select:focus {
    color: rgb(252, 37, 13);
    font-size: 0.9rem;
    margin-top: 5px;
+}
+
+.loading {
+  width: 10px;
+  height: 10px;
 }
 
 @media screen and (max-width: 1200px) {

@@ -71,6 +71,12 @@ table tbody tr:hover {
   cursor: pointer;
 }
 
+.empety-data {
+   text-align: center;
+   padding: 15px;
+   font-size: 0.95rem;
+}
+
 @media screen and (max-width: 768px) {
    #header nav h1 {
       font-size: 1.3rem;

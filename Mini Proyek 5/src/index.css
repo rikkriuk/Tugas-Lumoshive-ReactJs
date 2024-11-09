@@ -12,6 +12,10 @@ main {
   /* background-color: black; */
 }
 
+body {
+  /* background-color: black; */
+}
+
 /* default button */
 button, .button {
   border: none;
