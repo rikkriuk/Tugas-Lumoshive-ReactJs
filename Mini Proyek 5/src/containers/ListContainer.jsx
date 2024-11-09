@@ -34,7 +34,8 @@ const ListContainer = () => {
       <>
          <ListItem 
             data={data}
-            onDeleteSuccess={handleRefresh}
+            handleRefresh={handleRefresh}
+            setData={setData}
          />
       </>
    )

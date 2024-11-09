@@ -4,21 +4,68 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { api } from "../../utils/api";
 import { LanguageContext, ThemeContext } from "../../App";
+import Swal from "sweetalert2";
+import useInput from "../../hooks/useInput";
 
-const ListItem = ({ data, onDeleteSuccess }) => {
+const ListItem = ({ data, setData, handleRefresh }) => {
    const {language} = useContext(LanguageContext);
    const {isDarkMode} = useContext(ThemeContext);
+   const [form, setForm, handleChange] = useInput({
+      search: "",
+   });
 
    const handleDelete = (id) => {
-      api.delete(`students/${id}`)
-      .then(() => {
-         alert("Berhasil hapus")
-         onDeleteSuccess();
+      Swal.fire({
+        title: language === "en" ? "Are you sure?" : "Apa kamu yakin?",
+        text: language === "en" ? "Student data will be permanently deleted." : "Data siswa akan dihapus secara permanen.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: language === "en" ? "Yes, delete!" : "Ya, hapus!",
+        cancelButtonText: language === "en" ? "No, cancel" : "tidak, batal!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          api.delete(`students/${id}`)
+            .then(() => {
+              Swal.fire({
+                title:  language === "en" ? "Success" : "Berhasil!",
+                text: language === "en" ? "Successfully deleted student data" : "Berhasil hapus data siswa",
+                icon: "success",
+                confirmButtonText: "OK"
+              }).then(() => {
+                handleRefresh();
+              });
+            })
+            .catch((err) => {
+              Swal.fire({
+                title: "Error!",
+                text: language === "en" ? "Something wrong, try again!" : "Terjadi kesalahan, coba lagi!",
+                icon: "error",
+                confirmButtonText: language === "en" ? "Try again" : "Coba lagi"
+              });
+              console.log(err);
+            });
+        } else {
+          Swal.fire({
+            title: language === "en" ? "Cancelled" : "Dibatalkan",
+            text: language === "en" ? "Student data is not deleted." : "Data siswa tidak dihapus.",
+            icon: "info",
+            confirmButtonText: "OK"
+          });
+        }
+      });
+   }
+
+   const handleSearch = () => {
+      api.get(`students?find=${form.search}`)
+      .then((res) => {
+         setForm({
+            search: "",
+         });
+         setData(res.data.data);
       })
       .catch((err) => {
-         alert("Terjadi kesalahan, coba lagi");
          console.log(err);
-      })
+      });
    }
 
    return (
@@ -26,10 +73,19 @@ const ListItem = ({ data, onDeleteSuccess }) => {
          <section className="list-item">
             <div className="list-item-header">
                <h2>{language === "en" ? "List Students" : "Daftar Mahasiswa"}</h2>
-               <Link to={"/add"} className="button add-btn">
-                  <i className="bi bi-plus-square"></i>
-                  {language === "en" ? "Add" : "Tambah"}
-               </Link>
+               <div className="search-container">
+                  <input type="text" onChange={handleChange} className="search-input" name="search" placeholder={language === "en" ? "Search..." : "Cari..."} />
+                  <button onClick={handleRefresh} className="btn back-btn"><i className="bi bi-x-lg"></i></button>
+                  <button onClick={handleSearch} className="btn theme-btn">
+                     <i className="bi bi-search"></i>
+                     {language === "en" ? "Find" : "Temukan"}
+                  </button>
+
+                  <Link to={"/add"} className="button add-btn">
+                     <i className="bi bi-plus-square"></i>
+                     {language === "en" ? "Add" : "Tambah"}
+                  </Link>
+               </div>
             </div>
 
             <div className="list-item-content">
@@ -93,7 +149,9 @@ ListItem.propTypes = {
          gender: PropTypes.string.isRequired,
       })
    ).isRequired,
-   onDeleteSuccess: PropTypes.func.isRequired,
+   setData: PropTypes.func.isRequired,
+   handleRefresh: PropTypes.func.isRequired,
+
 };
 
 export default ListItem;

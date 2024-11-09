@@ -16,7 +16,7 @@ const Navbar = () => {
             <div className="settings">
                <button onClick={toggleDarkMode} className="theme-btn">
                   <i className={`bi ${isDarkMode ? "bi-brightness-low-fill" : "bi-moon-stars"}`}></i>
-                  {language === "en" ? (isDarkMode ? "Mode Gelap" : "Mode Terang") : (isDarkMode ? "Dark Mode" : "Light Mode")}
+                  {language === "en" ? (isDarkMode ? "Mode Terang" : "Mode Gelap") : (isDarkMode ? "Light Mode" : "Dark Mode")}
                </button>
                <button onClick={onChangeLanguage} className="language-btn">
                   <i className="bi bi-translate"></i>

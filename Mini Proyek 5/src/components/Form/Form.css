@@ -53,8 +53,8 @@ input[type="date"] {
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-   background-color: #fff;
-   border-radius: 3px;
+  background-color: #ddd;
+  border-radius: 3px;
 }
 
 select {

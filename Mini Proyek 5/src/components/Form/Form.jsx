@@ -8,6 +8,7 @@ import NotFoundPage from "../NotFound/NotFound";
 import { LanguageContext, ThemeContext } from "../../App";
 import formValidation from "../../utils/validation";
 import useStudentData from "../../hooks/useStudentData";
+import Swal from "sweetalert2";
 
 const Form = () => {
    const navigate = useNavigate();
@@ -61,11 +62,21 @@ const Form = () => {
          } else {
             response = await api.post("/students", form);
          }
-         console.log(response);
-         alert("berhasil");
+
+         Swal.fire({
+            title: language === "en" ? "Success" : "Berhasil!",
+            text: language === "en" ? `Successfully ${id ? "changed" : "added"} student data` : `Berhasil ${id ? "ubah" : "tambah"} data siswa`,
+            icon: "success",
+            confirmButtonText: "OK"
+         });
          navigate("/");
       } catch (err) {
-         alert("gagal, coba lagi");
+         Swal.fire({
+            title: "Error!",
+            text: language === "en" ? "Something wrong, try again!" : "Terjadi kesalahan, coba lagi!",
+            icon: "error",
+            confirmButtonText: language === "en" ? "Try again" : "Coba lagi"
+         });
          console.log(err)
       }
    }

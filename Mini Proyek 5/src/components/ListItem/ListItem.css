@@ -5,7 +5,8 @@
 .list-item-header {
    display: flex;
    justify-content: space-between;
-   align-items: center;
+   flex-direction: column;
+   align-items: start;
    padding: 20px 0;
 }
 
@@ -107,8 +108,36 @@ table tbody tr:hover {
    background-color: #dc2626;
 }
 
+.search-container {
+   display: flex;
+   justify-content: start;
+   align-items: center;
+   gap: 5px;
+   margin-top: 10px;
+}
+
+.search-container input {
+   width: 100%;
+   padding: 8px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   font-size: 14px;
+   color: #333;
+   outline: none;
+}
+
 @media screen and (max-width: 768px) {
    #header nav h1 {
       font-size: 1.3rem;
+   }
+}
+
+@media screen and (max-width: 576px) {
+   table th, table td {
+      font-size: 0.8rem;
+   }
+
+   button, .button {
+      font-size: 0.8rem;
    }
 }
