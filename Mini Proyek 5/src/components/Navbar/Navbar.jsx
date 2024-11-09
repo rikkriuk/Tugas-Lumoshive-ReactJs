@@ -11,11 +11,11 @@ const Navbar = () => {
 
             <div className="settings">
                <button className="theme-btn">
-                  <i class="bi bi-moon-stars"></i>
+                  <i className="bi bi-moon-stars"></i>
                   Dark Mode
                </button>
                <button className="language-btn">
-                  <i class="bi bi-translate"></i>
+                  <i className="bi bi-translate"></i>
                   Indonesia
                </button>
             </div>

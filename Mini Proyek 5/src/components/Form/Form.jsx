@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Form.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useInput from "../../hooks/useInput";
+import { api, postData } from "../../utils/api";
+import axios from "axios";
 
 // {
 //    "name": "Neutrofil",
@@ -16,8 +18,10 @@ import useInput from "../../hooks/useInput";
 
 const Form = () => {
    const navigate = useNavigate();
+   const {id} = useParams();
    const [errorForm, setErrorForm] = useState({});
-   const [form, handleChange] = useInput({
+   const [loading, setLoading] = useState(false);
+   const [form, setForm, handleChange] = useInput({
       name: "",
       class: "",
       year: "",
@@ -27,6 +31,25 @@ const Form = () => {
       address: "",
       gender: ""
    });
+
+   useEffect(() => {
+      if (id) {
+         setLoading(true)
+         api.get(`students/${id}`)
+         .then((res) => {
+            const data = res.data.data;
+            setForm(data);
+         })
+         .catch((err) => {
+            navigate("/")
+            console.log(err)
+            alert("Failed fetch data");
+         })
+         .finally(() => {
+            setLoading(false);
+         })
+      }
+   }, [])
 
    // form validation
    const formValidation = () => {
@@ -74,11 +97,35 @@ const Form = () => {
       }
 
       setErrorForm(errorForm);
+      return Object.keys(errorForm).length;
    }
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
-      formValidation();
+      if (formValidation()) {
+         return;
+      }
+
+      try {
+         let response;
+         if (id) {
+            response = await postData(`/students${id}`, form);
+         } else {
+            response = await postData("/students", form);
+         }
+         alert("berhasil");
+         console.log(response);
+         navigate("/");
+      } catch (err) {
+         alert("gagal");
+         console.log(err)
+      }
+   }
+
+   if (loading) {
+      <>
+         <p>Loading...</p>
+      </>
    }
 
    return (

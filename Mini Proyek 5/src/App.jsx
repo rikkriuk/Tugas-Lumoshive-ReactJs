@@ -13,6 +13,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<ListContainer />} />
             <Route path="/add" element={<FormContainer />} />
+            <Route path="/edit/:id" element={<FormContainer />} />
           </Routes>
         </Layout>
       </Router>
