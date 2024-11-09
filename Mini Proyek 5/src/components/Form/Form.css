@@ -155,4 +155,14 @@ form.dark .button-container button {
    .form-container {
       grid-template-columns: repeat(1, 1fr);
    }
+
+   .form-item label {
+      font-size: 0.9rem;
+   }
+
+   .form-item input,
+   .form-item select,
+   .form-item textarea {
+      font-size: 0.8rem;
+   }
 }
