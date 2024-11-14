@@ -1,0 +1,43 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://fe-slicing-design-kelompok-2.vercel.app/</loc>
+      <lastmod>2024-11-14</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+   </url>
+
+   <url>
+      <loc>https://fe-slicing-design-kelompok-2.vercel.app/about</loc>
+      <lastmod>2024-11-14</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>https://fe-slicing-design-kelompok-2.vercel.app/our-services</loc>
+      <lastmod>2024-11-14</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>https://fe-slicing-design-kelompok-2.vercel.app/portfolio</loc>
+      <lastmod>2024-11-14</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>https://fe-slicing-design-kelompok-2.vercel.app/blog</loc>
+      <lastmod>2024-11-14</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>https://fe-slicing-design-kelompok-2.vercel.app/contact</loc>
+      <lastmod>2024-11-14</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+</urlset>
